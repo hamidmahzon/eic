@@ -119,7 +119,7 @@
 </div>
 
 <!-- Services Section -->
-<div class="w3-container w3-light-grey" style="padding:16px" id="services">
+<div class="w3-container w3-light-grey" style="padding:128px 16px" id="services">
   <h3 class="w3-center w3-xxlarge">The Services</h3>
   <p class="w3-center w3-large">Our company provides a range of services to meet your needs:
   <br>
