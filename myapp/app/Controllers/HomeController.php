@@ -11,7 +11,7 @@ class HomeController extends BaseController
     public function index()
     {
 		$data['records']  =  db('home')->get()->getResult();
-		$data['services'] =  db('services')->get()->getResult();
+		$data['services'] =  db('service')->get()->getResult();
 		$data['abouts']   =  db('about')->get()->getResult();
         return view('home/home',$data);
     }

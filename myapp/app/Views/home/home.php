@@ -120,42 +120,49 @@
 
 <!-- Services Section -->
 <div class="w3-container w3-light-grey" style="padding:128px 16px" id="services">
-  <h3 class="w3-center w3-xxlarge">The Services</h3>
-  <p class="w3-center w3-large">Our company provides a range of services to meet your needs:
-  <br>
-      Roofing and roof painting<br>
-      Water blasting<br>
-      Exterior painting<br>
-      Ceiling battens and suspended ceilings<br>
-      Steel stud wall framing<br>
-      Gib supply, install, and stopping<br>
-      Painting and decoration<br>
-      We offer comprehensive solutions in these areas to enhance the aesthetics and functionality of your property.</p>
+  <h3 class="w3-center w3-xxlarge"><?=$services[0]->name?>
+    <?php if(sess()->get('login'))
+    {?>
+        <i class="w3-text-blue w3-xlarge fas fa-edit" onclick="load(); $.get('<?=base_url('edit/service/'.$services[0]->id)?>', function(data, status){$('#target').html(data).show();});" style="cursor:pointer"></i>
+    <?php
+    }?>
+    </h3>
+    <p class="w3-center w3-large"><?=$services[0]->desc?></p>
   
     <div class="w3-row-padding" style="margin-top:64px">
     <?php
         $z=1;
+        $e=0;
         foreach($services as $r)
         {
-        if($z >3)
-        {
-            $e=3;
-        }
-        else
-        {
-            $e=4;
-        }?>
+            if($z > 1)
+            {
+                if($z >4)
+                {
+                    $e=3;
+                }
+                else
+                {
+                    $e=4;
+            }?>
         <div class="w3-col l<?=$e?> m6 w3-margin-bottom">
         <div class="w3-card w3-white">
-        <img src="<?=base_url('assets/img/services/'.$r->img)?>" style="width:100%">
+        <img src="<?=base_url('assets/img/service/'.$r->img)?>" style="width:100%">
         <div class="w3-container">
-          <h3><?=$r->name?></h3>
+          <h3><?=$r->name?>
+            <?php if(sess()->get('login'))
+            {?>
+                <i class="w3-text-blue w3-xlarge fas fa-edit" onclick="load(); $.get('<?=base_url('edit/service/'.$r->id)?>', function(data, status){$('#target').html(data).show();});" style="cursor:pointer"></i>    
+            <?php
+            }?>
+            </h3>
           <p><?=$r->desc?></p>
           <p><a href="mailto:info@eicconstruction.co.nz" class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</a></p>
         </div>
       </div>
     </div>
     <?php
+            }
     $z++;
     }?>
         
