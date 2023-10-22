@@ -29,8 +29,12 @@ class HomeController extends BaseController
 				{                    
                     $imagName   = $this->request->getVar('oimg');
 				    $imageFile->move('assets/img/'.$sec,$imagName,true);
-                    array_pop($_POST);
 				}
+                if($this->request->getVar('oimg'))
+                {
+                    array_pop($_POST);
+                }
+                
                 db($sec)->set($_POST)->where('id',$id)->update();
 				session()->setFlashdata('flash', "<b class='w3-text-blue'>".lang('app.opr_done')."</b>");
 				return redirect()->back();

@@ -157,7 +157,7 @@
             }?>
             </h3>
           <p><?=$r->desc?></p>
-          <p><a href="mailto:info@eicconstruction.co.nz" class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</a></p>
+          <p><a href="mailto:info@eicconstruction.co.nz" class="w3-button w3-light-grey w3-block"><i class="fab fa-whatsapp"></i> Contact</a></p>
         </div>
       </div>
     </div>
