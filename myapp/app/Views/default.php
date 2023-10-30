@@ -16,7 +16,7 @@
 ?>
 
 <!DOCTYPE html>
-<html>
+<html style="user-select: none;">
 <head>
 <title>Welcome to EIC Construction</title>
 <meta charset="UTF-8">
@@ -58,7 +58,24 @@ body, html
     background-color: lightgray;
     color: black;
 }
+    
+    img {
+      pointer-events: none;
+    }
 </style>
+      <script>
+   document.addEventListener('contextmenu', preventDefaultAction);
+document.addEventListener('keydown', preventDefaultAction);
+
+function preventDefaultAction(event) {
+  if (event.type === 'contextmenu' ||
+      (event.ctrlKey && event.key === 'u') ||
+      (event.key === 'F12' || event.keyCode === 123) ||
+      ((event.ctrlKey || event.metaKey) && event.shiftKey && event.key === 'I')) {
+    event.preventDefault();
+  }
+}
+  </script>
 </head>
 <body>
 <!-- Navbar (sit on top) -->
@@ -118,16 +135,10 @@ body, html
     <?= $this->renderSection('content') ?>
 
 <!-- Footer -->
-<footer class="w3-center w3-black w3-padding-64">
-  <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
-  <div class="w3-xlarge w3-section">
-    <i class="fab fa-facebook w3-hover-opacity"></i>
-    <i class="fab fa-instagram w3-hover-opacity"></i>
-    <i class="fab fa-snapchat w3-hover-opacity"></i>
-    <i class="fab fa-pinterest-p w3-hover-opacity"></i>
-    <i class="fab fa-twitter w3-hover-opacity"></i>
-    <i class="fab fa-linkedin w3-hover-opacity"></i>
-  </div>
+<footer class="w3-center w3-black w3-padding-16">
+    <a href="#home" class="w3-button w3-light-grey w3-margin-right w3-right"><i class="fa fa-arrow-up"></i> To the top</a>
+    <img src="<?=base_url('assets/img/logo')?>" class="w3-image w3-margin-left w3-left" width="50px;" />
+
   <p>Developer by EIC Construction</p>
 </footer>
  

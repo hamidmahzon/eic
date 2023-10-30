@@ -39,12 +39,10 @@
     </p>
   </div> 
   <div class="w3-display-bottomleft w3-text-black w3-xlarge" style="padding:24px 48px">
-    <i class="fa fa-facebook-official w3-hover-opacity"></i>
-    <i class="fa fa-instagram w3-hover-opacity"></i>
-    <i class="fa fa-snapchat w3-hover-opacity"></i>
-    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-    <i class="fa fa-twitter w3-hover-opacity"></i>
-    <i class="fa fa-linkedin w3-hover-opacity"></i>
+    <a class="w3-large" href="tel:+<?=$contacts[0]->value?>"><i class="fa fa-phone fa-fw w3-large"></i></a>
+    <a class="w3-large" href="https://wa.me/<?=$contacts[0]->value?>" target="_blank"><i class="fab fa-whatsapp	w3-text-green fa-fw w3-large"></i></a>
+    <a class="w3-large" href="mailto:<?=$contacts[1]->value?>"><i class="fa fa-envelope fa-fw w3-large  w3-text-white"> </i></a>
+    <a class="w3-large" href="<?=$contacts[3]->value?>" target="_blank"><i class="fab fa-facebook w3-text-blue fa-fw w3-large"></i></a>
   </div>
 </header>
   	<?php if(0)
@@ -182,28 +180,46 @@
 <!-- Contact Section -->
 <div class="w3-container" style="padding:16px" id="contact">
   <h3 class="w3-center">CONTACT</h3>
-  <p class="w3-center w3-large">Lets get in touch. Send us a message:</p>
+  <p class="w3-center w3-large">Lets get in touch</p>
   <div style="margin-top:48px">
-    <a class="w3-large" href="https://www.google.com/maps/place/14+Fjord+Way,+Karaka+2113,+New+Zealand/@-37.0828634,174.9154926,17z/data=!3m1!4b1!4m6!3m5!1s0x6d0d536abfe6c871:0xce54c3792d082fb0!8m2!3d-37.0828677!4d174.9180675!16s%2Fg%2F11sd_z_fdg?entry=ttu" target="_blank"><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i> 14 Fjord Way Karaka Papakura 2113 New Zealand</a>
+    <a class="w3-large" href="tel:+<?=$contacts[0]->value?>"><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> <?=$contacts[0]->name?></a>
+    <?php if(sess()->get('login'))
+    {?>
+        <i class="w3-text-blue w3-xlarge fas fa-edit" onclick="load(); $.get('<?=base_url('edit/contact/'.$contacts[0]->id)?>', function(data, status){$('#target').html(data).show();});" style="cursor:pointer"></i>
+    <?php
+    }?>
     <br>
     <br>
-    <a class="w3-large" href="tel:+64211723397"><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> +64211723397</a>
+    <a class="w3-large" href="https://wa.me/<?=$contacts[0]->value?>" target="_blank"><i class="fab fa-whatsapp	w3-text-green fa-fw w3-xxlarge w3-margin-right"></i> +<?=$contacts[0]->value?></a>
+    <br>
+    <br>
+    <a class="w3-large" href="mailto:<?=$contacts[1]->value?>"><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> <?=$contacts[1]->value?></a>
+    <?php if(sess()->get('login'))
+    {?>
+        <i class="w3-text-blue w3-xlarge fas fa-edit" onclick="load(); $.get('<?=base_url('edit/contact/'.$contacts[1]->id)?>', function(data, status){$('#target').html(data).show();});" style="cursor:pointer"></i>
+    <?php
+    }?>
+    <br>
+    <br>
+    <a href="#contact" class="w3-large"><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i> <?=$contacts[2]->value?></a>
+    <?php if(sess()->get('login'))
+    {?>
+        <i class="w3-text-blue w3-xlarge fas fa-edit" onclick="load(); $.get('<?=base_url('edit/contact/'.$contacts[2]->id)?>', function(data, status){$('#target').html(data).show();});" style="cursor:pointer"></i>
+    <?php
+    }?>
+    <br>
+    <br>
+    <a class="w3-large" href="<?=$contacts[3]->value?>" target="_blank"><i class="fab fa-facebook	w3-text-blue fa-fw w3-xxlarge w3-margin-right"></i> <?=$contacts[3]->name?></a>
+    <?php if(sess()->get('login'))
+    {?>
+        <i class="w3-text-blue w3-xlarge fas fa-edit" onclick="load(); $.get('<?=base_url('edit/contact/'.$contacts[3]->id)?>', function(data, status){$('#target').html(data).show();});" style="cursor:pointer"></i>
+    <?php
+    }?>
       <br>
       <br>
-      <a class="w3-large" href="mailto:info@eicconstruction.co.nz"><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> info@eicconstruction.co.nz</a>
+      
     <br>
     <br>
-    <form action="<?= base_url('email') ?>" method="post">
-      <p><input class="w3-input w3-border" type="text" placeholder="Name" required name="name"></p>
-      <p><input class="w3-input w3-border" type="email" placeholder="Email" required name="email"></p>
-      <p><input class="w3-input w3-border" type="text" placeholder="Subject" required name="subject"></p>
-      <p><input class="w3-input w3-border" type="text" placeholder="Message" required name="message"></p>
-      <p>
-        <button class="w3-button w3-black" type="submit">
-          <i class="fa fa-paper-plane"></i> SEND MESSAGE
-        </button>
-      </p>
-    </form>
   </div>
 </div>
 <?= $this->endSection() ?>
